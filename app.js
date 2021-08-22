@@ -59,6 +59,21 @@ app.get('/albums/:artistId', (req, res, next) => {
     );
 });
 
+app.get('/viewtracks/:albumId', (req, res, next) => {
+  const albumId = req.params.albumId;
+  spotifyApi
+    .getAlbumTracks(albumId)
+    .then((data) => {
+      console.log('Album tracks', data.body.items);
+      res.render('viewtracks', {
+        tracks: data.body.items
+      });
+    })
+    .catch((err) =>
+      console.log('The error while searching tracks occurred: ', err)
+    );
+});
+
 app.listen(3000, () =>
   console.log('My Spotify project running on port 3000 🎧 🥁 🎸 🔊')
 );
