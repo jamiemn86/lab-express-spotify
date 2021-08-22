@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  background: url('../images/spotify-background.jpeg') no-repeat center center
+    fixed;
+  background-size: cover;
+  color: white;
+  font-size: 25px;
+}
+.searchfield {
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+}
