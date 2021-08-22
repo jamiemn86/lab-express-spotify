@@ -44,6 +44,21 @@ app.get('/artist-search-results', (req, res) => {
     );
 });
 
+app.get('/albums/:artistId', (req, res, next) => {
+  const artistId = req.params.artistId;
+  spotifyApi
+    .getArtistAlbums(artistId)
+    .then((data) => {
+      console.log('Album information', data.body.items);
+      res.render('albums', {
+        albums: data.body.items
+      });
+    })
+    .catch((err) =>
+      console.log('The error while searching albums occurred: ', err)
+    );
+});
+
 app.listen(3000, () =>
   console.log('My Spotify project running on port 3000 🎧 🥁 🎸 🔊')
 );
